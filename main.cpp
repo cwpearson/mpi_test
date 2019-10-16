@@ -22,6 +22,18 @@ int main(int argc, char **argv) {
   printf("Hello world from %s, rank %d out of %d processors\n", processor_name,
          world_rank, world_size);
 
+  int dst_rank = (world_rank + 1) % world_size;
+  int src_rank = world_rank - 1;
+  if (src_rank < 0) {
+    src_rank = world_size - 1;
+  }
+  float val = world_rank;
+  MPI_Send(&val, 1, MPI_FLOAT, dst_rank, 0, MPI_COMM_WORLD);
+  MPI_Status stat;
+  MPI_Recv(&val, 1, MPI_FLOAT, src_rank, 0, MPI_COMM_WORLD, &stat);
+
+  printf("rank %d  got %f \n", world_rank, val);
+
   // Finalize the MPI environment.
   MPI_Finalize();
 }
