@@ -7,12 +7,14 @@ host=`hostname`
 cpu_flags=''
 gpu_flags=''
 one_node_flags='-n 4'
-two_node_flags=''
+two_node_flags='-n 4'
 impl=''
 
 set -x
 if [[ `mpirun --version | grep "Open MPI"` ]]; then
     impl="ompi"
+elif [[ `mpirun --version | grep "HYDRA"` ]]; then
+    impl="mpich"
 fi
 set +x
 
@@ -23,9 +25,12 @@ if [[ "$host" =~ .*vortex.* ]]; then   # vortex
 elif [[ $host =~ .*ascicgpu.* ]]; then # ascicgpu
     echo $host matched ascicgpu
     if [[ $impl == "ompi" ]]; then     # ascicgpu + Open MPI
-        two_node_flags="$two_node_flags \
+        two_node_flags=" \
         --mca btl_tcp_if_include 10.203.0.0/16 \
         -np 4 -host ascicgpu030:2,ascicgpu032:2"
+    elif [[ $impl == "mpich" ]]; then
+        two_node_flags=" \
+        -n 4 -host ascicgpu030,ascicgpu032"
     fi
 fi
 
@@ -42,8 +47,8 @@ run_cpu_1_test() {
     # mvapich2 makes a bunch of spam if its build with CUDA but the above is set :(
     export MV2_SUPPRESS_CUDA_USAGE_WARNING=1
     mpirun $cpu_flags $one_node_flags $1 \
-      && echo PASS (1 node): mpirun $cpu_flags $one_node_flags $1 \
-      || echo FAIL (1 node): mpirun $cpu_flags $one_node_flags $1
+      && echo "PASS (1 node):" mpirun $cpu_flags $one_node_flags $1 \
+      || echo "FAIL (1 node):" mpirun $cpu_flags $one_node_flags $1
 }
 
 run_cpu_2_test() {
@@ -52,8 +57,8 @@ run_cpu_2_test() {
     # mvapich2 makes a bunch of spam if its build with CUDA but the above is set :(
     export MV2_SUPPRESS_CUDA_USAGE_WARNING=1
     mpirun $cpu_flags $two_node_flags $1 \
-      && echo PASS (2 node): mpirun $cpu_flags $two_node_flags $1 \
-      || echo FAIL (2 node): mpirun $cpu_flags $two_node_flags $1
+      && echo "PASS (2 node):" mpirun $cpu_flags $two_node_flags $1 \
+      || echo "FAIL (2 node):" mpirun $cpu_flags $two_node_flags $1
 }
 
 
