@@ -13,12 +13,14 @@ make
 
 ## Run all tests
 
-Adjust `run-all.sh` to match your environment, if needed
+`run-all.sh` attempts to discover certain environments automatically.
+You can always override the detected flags yourself if you want.
+
 ```
-./run-all.sh
+./run-all.sh | grep 'PASS\|FAIL'
 ```
 
-If any binaries fail, you can run them individually...
+If any tests fails, you can re-run them individually.
 
 ## Run individual tests
 
