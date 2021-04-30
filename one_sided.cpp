@@ -35,10 +35,14 @@ int main(int argc, char **argv) {
     target = rank + 1;
   }
 
+  // start exposure of window
+  MPI_Win_fence(0, win);
+
   // send our rank to the target window
   std::cout << "rank " << rank << " put to " << target << std::endl << std::flush;
   MPI_Put(&rank, 1, MPI_INT, target, 0, 1, MPI_INT, win);   
 
+  // end exposure of window
   MPI_Win_fence(0, win);
 
   int err = 0;
@@ -50,6 +54,6 @@ int main(int argc, char **argv) {
 
   MPI_Win_free(&win);
   MPI_Finalize();
-  std::cout << "rank " << rank << "completed" << std::endl << std::flush;
+  std::cout << "rank " << rank << " completed" << std::endl << std::flush;
   return err;
 }
