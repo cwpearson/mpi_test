@@ -2,6 +2,9 @@
 #include <stdio.h>
 
 int main(int argc, char **argv) {
+  (void) argc;
+  (void) argv;
+
   // Initialize the MPI environment
   MPI_Init(NULL, NULL);
 
@@ -32,7 +35,7 @@ int main(int argc, char **argv) {
   MPI_Status stat;
   MPI_Recv(&val, 1, MPI_FLOAT, src_rank, 0, MPI_COMM_WORLD, &stat);
 
-  printf("rank %d  got %f \n", world_rank, val);
+  printf("rank %d got %f\n", world_rank, val);
 
   // Finalize the MPI environment.
   MPI_Finalize();
