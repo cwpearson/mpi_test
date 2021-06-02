@@ -1,7 +1,8 @@
-#include <mpi.h>
 #include <cstdio>
 #include <vector>
+#include <cstdlib>
 
+#include <mpi.h>
 #include <sys/mman.h>
 #include <errno.h>
 

@@ -27,14 +27,6 @@ int main(int argc, char **argv) {
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-  // expect our a to be set by the left
-  int source;
-  if (0 == rank) {
-    source = size - 1;
-  } else {
-    source = rank - 1;
-  }
-
   int target; // set the right
   if (rank == size - 1) {
     target = 0;

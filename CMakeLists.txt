@@ -106,6 +106,13 @@ if (MPI_FOUND)
   set_cxx_standard(one-sided)
 endif()
 
+if (MPI_FOUND)
+  add_executable(persistent persistent.cpp)
+  target_link_libraries(persistent MPI::MPI_CXX)
+  set_cxx_options(persistent)
+  set_cxx_standard(persistent)
+endif()
+
 if (MPI_FOUND AND CMAKE_CUDA_COMPILER)
   add_executable(one-sided-gpu one_sided_gpu.cpp)
   target_link_libraries(one-sided-gpu MPI::MPI_CXX)

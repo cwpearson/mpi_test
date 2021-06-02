@@ -1,13 +1,11 @@
 # mpi_test
 
 Various standalone MPI binaries, either tests or examples depending on your perspective.
-The goal is to compile with no warnings with `-Wall -Wextra -Wshadow -pedantic` or similarly picky settings.
-
-Adjust `Makefile` to match your environment, if needed
-* uses `mpicxx` and a few simple flags by default
 
 ## Build
 ```
+mkdir build && cd build
+cmake ..
 make
 ```
 
