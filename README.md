@@ -4,15 +4,19 @@ Various standalone C++ MPI tests/examples/benchmarks.
 
 If CUDA is detected, additional binaries can be built.
 
-| name          | Kind      | Reqs.    | Ranks | Description |
-|---------------|-----------|----------|-------|-------------|
-|[hello-world][1] | Test      | MPI      | 1+    | an MPI hello-world |
-|[one-sided`](https://github.com/cwpearson/mpi_test/blob/master/one_sided.cpp)    | Test      | MPI      | 2     | one-sided communication |
-|[one-sided-gpu](https://github.com/cwpearson/mpi_test/blob/master/one_sided_gpu.cpp)| Test      | MPI+CUDA | 2     | one-sided communication on GPU buffer |
-|[persistent](https://github.com/cwpearson/mpi_test/blob/master/persistent.cpp)   | Benchmark | MPI      | 2     | ping-pong time for persistent Send/Recv |
-|[send-recv](https://github.com/cwpearson/mpi_test/blob/master/send_recv.cpp)    | Benchmark | MPI      | 2     | ping-pong time for Send/Recv |
+| name              | Kind      | Reqs.    | Ranks | Description |
+|-------------------|-----------|----------|-------|-------------|
+|[hello-world][1]   | Test      | MPI      | 1+    | an MPI hello-world |
+|[one-sided`][2]    | Test      | MPI      | 2     | one-sided communication |
+|[one-sided-gpu][3] | Test      | MPI+CUDA | 2     | one-sided communication on GPU buffer |
+|[persistent][4]    | Benchmark | MPI      | 2     | ping-pong time for persistent Send/Recv |
+|[send-recv][5]     | Benchmark | MPI      | 2     | ping-pong time for Send/Recv |
 
 [1]: https://github.com/cwpearson/mpi_test/blob/master/hello_world.cpp
+[2]: https://github.com/cwpearson/mpi_test/blob/master/one_sided.cpp
+[3]: https://github.com/cwpearson/mpi_test/blob/master/one_sided_gpu.cpp
+[4]: https://github.com/cwpearson/mpi_test/blob/master/persistent.cpp
+[5]: https://github.com/cwpearson/mpi_test/blob/master/send_recv.cpp
 
 ## Build
 ```
