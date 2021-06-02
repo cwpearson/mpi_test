@@ -149,7 +149,12 @@ int main(int argc, char **argv) {
     if (munlock(buf, bytes)) {
       perror("error unlocking memory");
     }
+    
+    MPI_Request_free(&sreq);
+    MPI_Request_free(&rreq);
     delete[] buf;
+    
+ 
   }
 
   MPI_Finalize();
