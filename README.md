@@ -4,19 +4,23 @@ Various standalone C++ MPI tests/examples/benchmarks.
 
 If CUDA is detected, additional binaries can be built.
 
-| name              | Kind      | Reqs.    | Ranks | Description |
-|-------------------|-----------|----------|-------|-------------|
-|[hello-world][1]   | Test      | MPI      | 1+    | an MPI hello-world |
-|[one-sided][2]    | Test      | MPI      | 2     | one-sided communication |
-|[one-sided-gpu][3] | Test      | MPI+CUDA | 2     | one-sided communication on GPU buffer |
-|[persistent][4]    | Benchmark | MPI      | 2     | ping-pong time for persistent Send/Recv |
-|[send-recv][5]     | Benchmark | MPI      | 2     | ping-pong time for Send/Recv |
+| name               | Kind      | Reqs.    | Ranks | Description |
+|--------------------|-----------|----------|-------|-------------|
+|[hello-world][1]    | Test      | MPI      | 1+    | an MPI hello-world |
+|[one-sided][2]      | Test      | MPI      | 2     | one-sided communication |
+|[one-sided-gpu][3]  | Test      | MPI+CUDA | 2     | one-sided communication on GPU buffer |
+|[persistent][4]     | Benchmark | MPI      | 2     | ping-pong time for persistent Send/Recv |
+|[persistent-gpu][5] | Benchmark | MPI+CUDA | 2     | ping-pong time for persistent Send/Recv on GPU buffer|
+|[send-recv][6]      | Benchmark | MPI      | 2     | ping-pong time for Send/Recv |
+|[send-recv-gpu][7]  | Benchmark | MPI+CUDA | 2     | ping-pong time for Send/Recv on GPU buffer|
 
 [1]: https://github.com/cwpearson/mpi_test/blob/master/hello_world.cpp
 [2]: https://github.com/cwpearson/mpi_test/blob/master/one_sided.cpp
 [3]: https://github.com/cwpearson/mpi_test/blob/master/one_sided_gpu.cpp
 [4]: https://github.com/cwpearson/mpi_test/blob/master/persistent.cpp
-[5]: https://github.com/cwpearson/mpi_test/blob/master/send_recv.cpp
+[5]: https://github.com/cwpearson/mpi_test/blob/master/persistent_gpu.cpp
+[6]: https://github.com/cwpearson/mpi_test/blob/master/send_recv.cpp
+[7]: https://github.com/cwpearson/mpi_test/blob/master/send_recv_gpu.cpp
 
 ## Build
 ```
@@ -54,8 +58,8 @@ Execute any binary you want using `mpirun`, or whatever is appropriate for your 
 
 * 1 node:  `jsrun -n 1 ./persistent`
 * 2 nodes: `jsrun -n 2 -r 1 -a 1 ./persistent`
-
+* 2 nodes w/GPU: `jsrun --smpi="-gpu" -n 2 -r 1 -g 1 ./send-recv-gpu`
 
 ## Notes on specific platforms
 
-Some Open MPIs use `long long` for their datatypes, which means we can't support ANSI C++ (`-ansi`).
+Some Open MPIs use `long long` for their datatypes, which is not a part of ANSI C++ (`-ansi`).
