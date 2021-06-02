@@ -1,4 +1,4 @@
-TARGETS = main one-sided
+TARGETS = main one-sided persistent
 
 all: ${TARGETS}
 
@@ -13,4 +13,7 @@ main: main.cpp Makefile
 	$(MPICXX) $(CXXFLAGS) $< -o $@
 
 one-sided: one_sided.cpp Makefile
+	$(MPICXX) $(CXXFLAGS) $< -o $@
+
+persistent: persistent.cpp Makefile
 	$(MPICXX) $(CXXFLAGS) $< -o $@

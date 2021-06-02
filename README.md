@@ -26,6 +26,11 @@ If any tests fails, you can re-run them individually.
 
 Execute any binary you want using `mpirun`, or whatever is appropriate for your platform.
 
+## Run Microbenchmarks
+
+- `persistent` (`persistent.cpp`) ping-pong time for persistent communication.
+
+
 ## Notes on specific platforms
 
 Some Open MPIs use `long long` for their datatypes, which means we can't support ANSI C++ (`-ansi`).
