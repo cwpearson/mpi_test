@@ -25,6 +25,14 @@ cmake ..
 make
 ```
 
+CMake will print the MPI environment it is using. For example:
+```
+-- MPI_CXX_COMPILER:     [...]/spectrum-mpi-10.3.1.2-20200121-p6nrnt6vtvkn356wqg6f74n6jspnpjd2/bin/mpicxx
+-- MPI_CXX_INCLUDE_DIRS: [...]/spectrum-mpi-10.3.1.2-20200121-p6nrnt6vtvkn356wqg6f74n6jspnpjd2/include
+-- MPIEXEC_EXECUTABLE:   [...]/spectrum-mpi-10.3.1.2-20200121-p6nrnt6vtvkn356wqg6f74n6jspnpjd2/bin/mpiexec
+```
+
+
 ## Run all tests
 
 `run-all.sh` attempts to discover certain environments automatically.
