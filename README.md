@@ -7,7 +7,7 @@ If CUDA is detected, additional binaries can be built.
 | name              | Kind      | Reqs.    | Ranks | Description |
 |-------------------|-----------|----------|-------|-------------|
 |[hello-world][1]   | Test      | MPI      | 1+    | an MPI hello-world |
-|[one-sided`][2]    | Test      | MPI      | 2     | one-sided communication |
+|[one-sided][2]    | Test      | MPI      | 2     | one-sided communication |
 |[one-sided-gpu][3] | Test      | MPI+CUDA | 2     | one-sided communication on GPU buffer |
 |[persistent][4]    | Benchmark | MPI      | 2     | ping-pong time for persistent Send/Recv |
 |[send-recv][5]     | Benchmark | MPI      | 2     | ping-pong time for Send/Recv |
@@ -52,8 +52,8 @@ Execute any binary you want using `mpirun`, or whatever is appropriate for your 
 
 ### Summit
 
-1 node:  `jsrun -n 1 ./persistent`
-2 nodes: `jsrun -n 2 -r 1 -a 1 ./persistent`
+* 1 node:  `jsrun -n 1 ./persistent`
+* 2 nodes: `jsrun -n 2 -r 1 -a 1 ./persistent`
 
 
 ## Notes on specific platforms
