@@ -6,11 +6,13 @@ If CUDA is detected, additional binaries can be built.
 
 | name          | Kind      | Reqs.    | Ranks | Description |
 |---------------|-----------|----------|-------|-------------|
-|`hello-world`  | Test      | MPI      | 1+    | an MPI hello-world |
-|`one-sided`    | Test      | MPI      | 2     | one-sided communication |
-|`one-sided-gpu`| Test      | MPI+CUDA | 2     | one-sided communication on GPU buffer |
-|`persistent`   | Benchmark | MPI      | 2     | ping-pong time for persistent Send/Recv |
-|`send-recv`    | Benchmark | MPI      | 2     | ping-pong time for Send/Recv |
+|[hello-world][1] | Test      | MPI      | 1+    | an MPI hello-world |
+|[one-sided`](https://github.com/cwpearson/mpi_test/blob/master/one_sided.cpp)    | Test      | MPI      | 2     | one-sided communication |
+|[one-sided-gpu](https://github.com/cwpearson/mpi_test/blob/master/one_sided_gpu.cpp)| Test      | MPI+CUDA | 2     | one-sided communication on GPU buffer |
+|[persistent](https://github.com/cwpearson/mpi_test/blob/master/persistent.cpp)   | Benchmark | MPI      | 2     | ping-pong time for persistent Send/Recv |
+|[send-recv](https://github.com/cwpearson/mpi_test/blob/master/send_recv.cpp)    | Benchmark | MPI      | 2     | ping-pong time for Send/Recv |
+
+[1]: https://github.com/cwpearson/mpi_test/blob/master/hello_world.cpp
 
 ## Build
 ```
