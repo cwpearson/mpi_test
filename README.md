@@ -1,6 +1,15 @@
 # mpi_test
 
-Various standalone MPI binaries, either tests or examples depending on your perspective.
+Various standalone C++ MPI tests/examples/benchmarks.
+
+If CUDA is detected, additional binaries can be built.
+
+| name          | Kind      | Reqs.    | Ranks | Description |
+|---------------|-----------|----------|-------|-------------|
+|`hello-world`  | Test      | MPI      | 1+    | an MPI hello-world |
+|`one-sided`    | Test      | MPI      | 2     | one-sided communication |
+|`one-sided-gpu`| Test      | MPI+CUDA | 2     | one-sided communication on GPU buffer |
+|`persistent`   | Benchmark | MPI      | 2     | ping-pong time for persistent Send/Recv |
 
 ## Build
 ```
@@ -23,11 +32,6 @@ If any tests fails, you can re-run them individually.
 ## Run individual tests
 
 Execute any binary you want using `mpirun`, or whatever is appropriate for your platform.
-
-## Run Microbenchmarks
-
-- `persistent` (`persistent.cpp`) ping-pong time for persistent communication.
-
 
 ## Notes on specific platforms
 
