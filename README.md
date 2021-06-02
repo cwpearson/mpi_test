@@ -29,13 +29,25 @@ cmake ..
 make
 ```
 
-CMake will print the MPI environment it is using. For example:
+CMake will print the detected MPI environment.
+Confirm it is what you expect.
+For example:
 ```
--- MPI_CXX_COMPILER:     [...]/spectrum-mpi-10.3.1.2-20200121-p6nrnt6vtvkn356wqg6f74n6jspnpjd2/bin/mpicxx
--- MPI_CXX_INCLUDE_DIRS: [...]/spectrum-mpi-10.3.1.2-20200121-p6nrnt6vtvkn356wqg6f74n6jspnpjd2/include
--- MPIEXEC_EXECUTABLE:   [...]/spectrum-mpi-10.3.1.2-20200121-p6nrnt6vtvkn356wqg6f74n6jspnpjd2/bin/mpiexec
+-- MPI_VERSION:
+-- MPI_CXX_COMPILER:            [...]/bin/mpicxx
+-- MPI_CXX_COMPILE_OPTIONS:     -pthread
+-- MPI_CXX_COMPILE_DEFINITIONS:
+-- MPI_CXX_INCLUDE_DIRS:        [...]/include
+-- MPI_CXX_LIBRARIES:           [...]/lib/libmpiprofilesupport.so;[...]/lib/libmpi_ibm.so
+-- MPI_CXX_LINK_FLAGS:          -pthread
 ```
+## Examples
 
+### Summit
+
+* 1 node:  `jsrun -n 1 ./persistent`
+* 2 nodes: `jsrun -n 2 -r 1 -a 1 ./persistent`
+* 2 nodes w/GPU: `jsrun --smpi="-gpu" -n 2 -r 1 -g 1 ./send-recv-gpu`
 
 ## Run all tests
 
@@ -52,13 +64,6 @@ If any tests fails, you can re-run them individually.
 
 Execute any binary you want using `mpirun`, or whatever is appropriate for your platform.
 
-## Examples
-
-### Summit
-
-* 1 node:  `jsrun -n 1 ./persistent`
-* 2 nodes: `jsrun -n 2 -r 1 -a 1 ./persistent`
-* 2 nodes w/GPU: `jsrun --smpi="-gpu" -n 2 -r 1 -g 1 ./send-recv-gpu`
 
 ## Notes on specific platforms
 
